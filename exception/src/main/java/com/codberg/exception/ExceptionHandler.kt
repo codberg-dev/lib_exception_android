@@ -44,7 +44,7 @@ class ExceptionHandler() : Thread.UncaughtExceptionHandler {
     fun catchException(exception: Throwable) {
         val errorString = getErrorAndDeviceInfo(exception, ErrorType.TRYCATCH)
 
-        Log.e("[Try/Catch] Exception", errorString)
+        Log.e("[Try/Catch] CodbergException", errorString)
     }
 
     private fun getErrorAndDeviceInfo(exception: Throwable, errorType: ErrorType): String {
