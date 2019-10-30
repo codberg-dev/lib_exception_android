@@ -3,7 +3,9 @@ package com.codberg.exception
 import android.content.Intent
 import android.os.Build
 import android.app.Activity
+import android.content.ComponentName
 import android.util.Log
+import androidx.core.content.IntentCompat
 import java.io.PrintWriter
 import java.io.StringWriter
 import kotlin.system.exitProcess
@@ -28,9 +30,12 @@ class ExceptionHandler() : Thread.UncaughtExceptionHandler {
 
         Log.e("CustomException", errorString)
 
-        val intent = Intent(myContext, myContext?.javaClass)
-        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        val intent = myContext!!.packageManager.getLaunchIntentForPackage(myContext!!.packageName)
+//        val componentName = intent!!.component as ComponentName
+//        val mainIntent = IntentCompat.makeRestartActivityTask()
+//        val intent = Intent(myContext, myContext?.javaClass)
+//        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+//        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         myContext?.startActivity(intent)
 
         exitReport()
