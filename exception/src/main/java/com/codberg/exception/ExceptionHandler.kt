@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Build
 import android.app.Activity
 import android.content.ComponentName
+import android.content.Context
 import android.util.Log
 import androidx.core.content.IntentCompat
 import java.io.PrintWriter
@@ -12,14 +13,14 @@ import kotlin.system.exitProcess
 
 
 class ExceptionHandler() : Thread.UncaughtExceptionHandler {
-    private var myContext: Activity? = null
+    private var myContext: Context? = null
 
     enum class ErrorType {
         GLOBAL,
         TRYCATCH
     }
 
-    constructor(myContext: Activity) : this() {
+    constructor(myContext: Context) : this() {
         this.myContext = myContext
     }
 
