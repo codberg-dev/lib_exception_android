@@ -10,7 +10,7 @@ class CodbergException {
         Thread.setDefaultUncaughtExceptionHandler(ExceptionHandler(context))
     }
 
-    fun tryCatchException(e: Exception) {
-        ExceptionHandler().catchException(e)
+    fun tryCatchException(e: Exception, firebaseFlag: Boolean = false) {
+        ExceptionHandler().catchException(firebaseFlag, e)
     }
 }

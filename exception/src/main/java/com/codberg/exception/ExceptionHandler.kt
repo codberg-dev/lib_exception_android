@@ -44,8 +44,12 @@ class ExceptionHandler() : Thread.UncaughtExceptionHandler {
         exitProcess(10)
     }
 
-    fun catchException(exception: Throwable) {
+    fun catchException(firebaseFlag: Boolean, exception: Throwable) {
         val errorString = getErrorAndDeviceInfo(exception, ErrorType.TRYCATCH)
+
+        if(firebaseFlag) {
+            CodbergCrash.Crash().customLogMessage(errorString)
+        }
 
         Log.e("[Try/Catch] CodbergException", errorString)
     }
