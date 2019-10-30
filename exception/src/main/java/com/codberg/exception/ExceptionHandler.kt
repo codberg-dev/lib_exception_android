@@ -35,8 +35,8 @@ class ExceptionHandler() : Thread.UncaughtExceptionHandler {
 //        val componentName = intent!!.component as ComponentName
 //        val mainIntent = IntentCompat.makeRestartActivityTask()
 //        val intent = Intent(myContext, myContext?.javaClass)
-//        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
-//        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        intent?.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+        intent?.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         myContext?.startActivity(intent)
 
         exitReport()
