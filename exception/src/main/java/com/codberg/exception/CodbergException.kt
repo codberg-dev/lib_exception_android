@@ -1,12 +1,13 @@
 package com.codberg.exception
 
 import android.app.Activity
+import android.content.Context
 import java.lang.Exception
 
 class CodbergException {
 
-    fun globalException(activity: Activity) {
-        Thread.setDefaultUncaughtExceptionHandler(ExceptionHandler(activity))
+    fun globalException(context: Context) {
+        Thread.setDefaultUncaughtExceptionHandler(ExceptionHandler(context))
     }
 
     fun tryCatchException(e: Exception) {
