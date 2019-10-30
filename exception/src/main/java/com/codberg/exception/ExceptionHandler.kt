@@ -7,6 +7,7 @@ import android.content.ComponentName
 import android.content.Context
 import android.util.Log
 import androidx.core.content.IntentCompat
+import com.crashlytics.android.Crashlytics
 import java.io.PrintWriter
 import java.io.StringWriter
 import kotlin.system.exitProcess
@@ -49,6 +50,7 @@ class ExceptionHandler() : Thread.UncaughtExceptionHandler {
 
         if(firebaseFlag) {
             CodbergCrash.Crash().customLogMessage(errorString)
+            Crashlytics.logException(exception)
         }
 
         Log.e("[Try/Catch] CodbergException", errorString)
