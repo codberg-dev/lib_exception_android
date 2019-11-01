@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
 //                CodbergCrash().TestCrash()
 //            }
 //            catch (e: Exception) {
-//                CodbergException().tryCatchException(e, true)
+//                CodbergException().tryCatchException(e, firebaseFlag = true)
 //            }
 //        }
     }

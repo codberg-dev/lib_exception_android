@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'org.jetbrains.dokka-android'
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
@@ -33,4 +35,17 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+}
+
+dokka {
+    moduleName = 'CodbergException'
+    outputFormat = 'html'
+    outputDirectory = "$projectDir/docs"
+    sourceDirs = files('src/main/java')
+    skipEmptyPackages = true
+//    linkMapping {
+//        dir = "src/main/java"
+//        url = ""
+//        suffix = ""
+//    }
 }

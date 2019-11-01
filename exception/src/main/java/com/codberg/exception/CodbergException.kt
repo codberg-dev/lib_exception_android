@@ -1,6 +1,5 @@
 package com.codberg.exception
 
-import android.app.Activity
 import android.content.Context
 import java.lang.Exception
 

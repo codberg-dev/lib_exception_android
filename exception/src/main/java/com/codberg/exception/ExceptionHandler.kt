@@ -30,7 +30,9 @@ class ExceptionHandler() : Thread.UncaughtExceptionHandler {
     override fun uncaughtException(thread: Thread, exception: Throwable) {
         val errorString = getErrorAndDeviceInfo(exception, ErrorType.GLOBAL)
 
-        Log.e("CustomException", errorString)
+        if(BuildConfig.DEBUG) {
+            Log.e("CustomException", errorString)
+        }
 
         val intent = myContext!!.packageManager.getLaunchIntentForPackage(myContext!!.packageName)
         intent?.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
@@ -49,11 +51,12 @@ class ExceptionHandler() : Thread.UncaughtExceptionHandler {
         val errorString = getErrorAndDeviceInfo(exception, ErrorType.TRYCATCH)
 
         if(firebaseFlag) {
-            CodbergCrash.Crash().customLogMessage(errorString)
             Crashlytics.logException(exception)
         }
 
-        Log.e("[Try/Catch] CodbergException", errorString)
+        if(BuildConfig.DEBUG) {
+            Log.e("[Try/Catch] CodbergException", errorString)
+        }
     }
 
     private fun getErrorAndDeviceInfo(exception: Throwable, errorType: ErrorType): String {
